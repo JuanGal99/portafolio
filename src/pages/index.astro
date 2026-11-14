@@ -25,7 +25,8 @@ import {
       <a href="#" class="nav-logo">JPG</a>
       <div class="nav-links">
         <a href="#proyectos">Proyectos</a>
-        <a href="#habilidades">Habilidades</a>
+        <a href="#tecnologias">Tecnologías</a>
+        <a href="#areas">Áreas</a>
         <a href="#contacto">Contacto</a>
       </div>
     </div>
@@ -222,10 +223,55 @@ import {
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="habilidades" class="section section-skills">
+  <!-- TECH -->
+  <section id="tecnologias" class="section section-tech">
     <div class="container">
-      <h2 class="section-title" data-animate>Habilidades y áreas de trabajo</h2>
+      <h2 class="section-title" data-animate>Tecnologías y herramientas</h2>
+      <div class="tech-grid" data-stagger>
+        <div class="tech-category" data-stagger-child>
+          <h3 class="tech-category-title">Lenguajes</h3>
+          <div class="tech-tags">
+            <span>TypeScript</span><span>JavaScript</span><span>Python</span><span>Java</span><span>SQL</span>
+          </div>
+        </div>
+        <div class="tech-category" data-stagger-child>
+          <h3 class="tech-category-title">Frontend</h3>
+          <div class="tech-tags">
+            <span>Angular</span><span>React</span><span>Astro</span><span>HTML</span><span>CSS</span><span>Tailwind CSS</span>
+          </div>
+        </div>
+        <div class="tech-category" data-stagger-child>
+          <h3 class="tech-category-title">Backend</h3>
+          <div class="tech-tags">
+            <span>.NET</span><span>Node.js</span><span>Spring Boot</span><span>Django</span><span>ASP.NET Core</span><span>API REST</span>
+          </div>
+        </div>
+        <div class="tech-category" data-stagger-child>
+          <h3 class="tech-category-title">Bases de datos</h3>
+          <div class="tech-tags">
+            <span>SQL Server</span><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Neo4j</span>
+          </div>
+        </div>
+        <div class="tech-category" data-stagger-child>
+          <h3 class="tech-category-title">Arquitectura e infraestructura</h3>
+          <div class="tech-tags">
+            <span>Microservicios</span><span>RabbitMQ</span><span>YARP</span><span>SignalR</span><span>Docker</span><span>Git</span><span>GitHub</span>
+          </div>
+        </div>
+        <div class="tech-category" data-stagger-child>
+          <h3 class="tech-category-title">Inteligencia artificial</h3>
+          <div class="tech-tags">
+            <span>TensorFlow</span><span>Keras</span><span>Scikit-learn</span><span>Deep Learning</span><span>Machine Learning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="areas" class="section section-skills">
+    <div class="container">
+      <h2 class="section-title" data-animate>Áreas de trabajo</h2>
       <p class="section-intro" data-animate>
         Estas son las áreas en las que trabajo y desarrollo mis capacidades como ingeniero de software.
         No es una lista de dominio completo — es el mapa de lo que he construido, estudiado y aplicado en proyectos reales.
@@ -670,6 +716,41 @@ import {
     padding: 3px 10px;
     border: 1px solid var(--border);
     border-radius: 4px;
+  }
+
+  .section-tech {
+    background: var(--bg-cool);
+  }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+  }
+  .tech-category {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .tech-category-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+  }
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tech-tags span {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg);
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
   }
 
   .skills-grid {
