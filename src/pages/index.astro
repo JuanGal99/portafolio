@@ -231,37 +231,37 @@ import {
         <div class="tech-category" data-stagger-child>
           <h3 class="tech-category-title">Lenguajes</h3>
           <div class="tech-tags">
-            <span>TypeScript</span><span>JavaScript</span><span>Python</span><span>Java</span><span>SQL</span>
+            <span class="tag-lang">TypeScript</span><span class="tag-lang">JavaScript</span><span class="tag-lang">Python</span><span class="tag-lang">Java</span><span class="tag-lang">SQL</span>
           </div>
         </div>
         <div class="tech-category" data-stagger-child>
           <h3 class="tech-category-title">Frontend</h3>
           <div class="tech-tags">
-            <span>Angular</span><span>React</span><span>Astro</span><span>HTML</span><span>CSS</span><span>Tailwind CSS</span>
+            <span class="tag-front">Angular</span><span class="tag-front">React</span><span class="tag-front">Astro</span><span class="tag-front">HTML</span><span class="tag-front">CSS</span><span class="tag-front">Tailwind CSS</span>
           </div>
         </div>
         <div class="tech-category" data-stagger-child>
           <h3 class="tech-category-title">Backend</h3>
           <div class="tech-tags">
-            <span>.NET</span><span>Node.js</span><span>Spring Boot</span><span>Django</span><span>ASP.NET Core</span><span>API REST</span>
+            <span class="tag-back">.NET</span><span class="tag-back">Node.js</span><span class="tag-back">Spring Boot</span><span class="tag-back">Django</span><span class="tag-back">ASP.NET Core</span><span class="tag-back">API REST</span>
           </div>
         </div>
         <div class="tech-category" data-stagger-child>
           <h3 class="tech-category-title">Bases de datos</h3>
           <div class="tech-tags">
-            <span>SQL Server</span><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Neo4j</span>
+            <span class="tag-db">SQL Server</span><span class="tag-db">PostgreSQL</span><span class="tag-db">MySQL</span><span class="tag-db">MongoDB</span><span class="tag-db">Neo4j</span>
           </div>
         </div>
         <div class="tech-category" data-stagger-child>
           <h3 class="tech-category-title">Arquitectura e infraestructura</h3>
           <div class="tech-tags">
-            <span>Microservicios</span><span>RabbitMQ</span><span>YARP</span><span>SignalR</span><span>Docker</span><span>Git</span><span>GitHub</span>
+            <span class="tag-infra">Microservicios</span><span class="tag-infra">RabbitMQ</span><span class="tag-infra">YARP</span><span class="tag-infra">SignalR</span><span class="tag-infra">Docker</span><span class="tag-infra">Git</span><span class="tag-infra">GitHub</span>
           </div>
         </div>
         <div class="tech-category" data-stagger-child>
           <h3 class="tech-category-title">Inteligencia artificial</h3>
           <div class="tech-tags">
-            <span>TensorFlow</span><span>Keras</span><span>Scikit-learn</span><span>Deep Learning</span><span>Machine Learning</span>
+            <span class="tag-ai">TensorFlow</span><span class="tag-ai">Keras</span><span class="tag-ai">Scikit-learn</span><span class="tag-ai">Deep Learning</span><span class="tag-ai">Machine Learning</span>
           </div>
         </div>
       </div>
@@ -723,34 +723,65 @@ import {
   }
   .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
   }
   .tech-category {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
+    padding: 24px 28px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .tech-category:nth-child(odd) {
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .tech-category:nth-last-child(-n+2) {
+    border-bottom: none;
   }
   .tech-category-title {
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
     color: var(--text-secondary);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
   .tech-tags span {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: var(--text);
-    background: var(--bg);
-    padding: 6px 14px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: none;
+    transition: transform 0.15s ease;
+  }
+  .tech-tags span:hover {
+    transform: translateY(-1px);
+  }
+  .tag-lang {
+    color: #1e40af;
+    background: rgba(45, 91, 227, 0.08);
+  }
+  .tag-front {
+    color: #166534;
+    background: rgba(22, 101, 52, 0.08);
+  }
+  .tag-back {
+    color: #7c2d12;
+    background: rgba(180, 83, 9, 0.08);
+  }
+  .tag-db {
+    color: #6b21a8;
+    background: rgba(107, 33, 168, 0.08);
+  }
+  .tag-infra {
+    color: #1e3a5f;
+    background: rgba(30, 58, 95, 0.08);
+  }
+  .tag-ai {
+    color: #b91c1c;
+    background: rgba(185, 28, 28, 0.07);
   }
 
   .skills-grid {
@@ -857,6 +888,12 @@ import {
     .project-image img {
       height: auto;
       object-fit: contain;
+    }
+    .tech-grid {
+      grid-template-columns: 1fr;
+    }
+    .tech-category:nth-child(odd) {
+      border-right: none;
     }
     .skills-grid {
       grid-template-columns: 1fr;
