@@ -1,0 +1,124 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Portafolio de Juan Pablo Galvis — Desarrollador Full Stack e Ingeniero de Sistemas" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <script>
+      import { animate, inView, stagger } from "motion";
+
+      document.querySelectorAll("[data-animate]").forEach((el) => {
+        inView(el, () => {
+          animate(
+            el,
+            { opacity: [0, 1], transform: ["translateY(24px)", "translateY(0)"] },
+            { duration: 0.6, easing: [0.25, 0.1, 0.25, 1] }
+          );
+        }, { margin: "-80px" });
+      });
+
+      document.querySelectorAll("[data-stagger]").forEach((container) => {
+        inView(container, () => {
+          const children = container.querySelectorAll("[data-stagger-child]");
+          animate(
+            children,
+            { opacity: [0, 1], transform: ["translateY(16px)", "translateY(0)"] },
+            { duration: 0.5, delay: stagger(0.08), easing: [0.25, 0.1, 0.25, 1] }
+          );
+        }, { margin: "-60px" });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --bg: #F0F2F7;
+    --bg-warm: #F5F3F0;
+    --bg-cool: #EDF0F8;
+    --surface: #FFFFFF;
+    --text: #1A1A2E;
+    --text-secondary: #5A5A7A;
+    --accent: #2D5BE3;
+    --accent-glow: rgba(45, 91, 227, 0.08);
+    --accent-light: rgba(45, 91, 227, 0.06);
+    --border: #DDE0E9;
+    --border-hover: #C5C9D6;
+    --radius: 12px;
+    --max-width: 1080px;
+    --gutter: 16px;
+  }
+
+  html {
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: var(--bg);
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: rgba(45, 91, 227, 0.2);
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  [data-animate],
+  [data-stagger-child] {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-animate],
+    [data-stagger-child] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
